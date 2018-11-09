@@ -17,13 +17,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    String path;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        path = "/storage/emulated/0/Android/data/Basti";
+        String path = getFilesDir().toString();
         Config configObj = new Config(path);
 
         if( !configObj.exists() ){
@@ -44,10 +43,6 @@ public class MainActivity extends AppCompatActivity {
         jahresbeitrag.setText(configObj.readData().get(2).getDataType() + " = " + configObj.readData().get(2).getData() );
 
         //configObj.printConfig();
-    }
-
-    public String getPath(){
-        return path;
     }
 
 

@@ -39,15 +39,6 @@ public class Config {
     }
 
 
-    public Config(){
-        /*
-        if( !configFile.exists() ){
-            initializeConfig();
-        }
-        */
-    }
-
-
     public boolean exists(){
         return configFile.exists();
     }
@@ -71,7 +62,7 @@ public class Config {
     }
 
     public ArrayList<ConfigObj> readData(){
-        ArrayList<ConfigObj> stringList = new ArrayList<ConfigObj>();
+        ArrayList<ConfigObj> configList = new ArrayList<ConfigObj>();
 
 
         try{
@@ -93,7 +84,7 @@ public class Config {
                 }
 
                 ConfigObj tmpConfig = new ConfigObj(dataType, data);
-                stringList.add( tmpConfig );
+                configList.add( tmpConfig );
             }
 
 
@@ -105,9 +96,7 @@ public class Config {
             e.printStackTrace();
             Log.i("MyApp", "IOException");
         }
-
-
-        return stringList;
+        return configList;
     }
 
     public void writeData(ConfigObj config){
